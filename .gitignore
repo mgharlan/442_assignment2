@@ -4,3 +4,5 @@ lib/
 share/
 pyvenv.cfg
 lib64
+etc/
+.ipynb_checkpoints/
