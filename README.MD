@@ -132,4 +132,5 @@ To pull the image on another EC2 instance run:
 
 ```
 docker pull harlangmason/cs442:project2
+docker run harlangmason/cs442:project2
 ```
