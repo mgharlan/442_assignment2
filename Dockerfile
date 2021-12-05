@@ -4,6 +4,10 @@ WORKDIR /442_assignment2
 
 COPY . /442_assignment2
 
+RUN python -m venv .
+
+RUN source bin/activate
+
 RUN pip install --upgrade pip
 
 RUN pip install -r requirements.txt
