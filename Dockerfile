@@ -4,6 +4,8 @@ WORKDIR /442_assignment2
 
 COPY . /442_assignment2
 
+RUN pip install --upgrade pip
+
 RUN pip install -r requirements.txt
 
 CMD ["python", "src/main.py"]
