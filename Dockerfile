@@ -1,17 +1,13 @@
-FROM python:3.9.9-slim
+FROM jupyter/pyspark-notebook:latest
 
 WORKDIR /442_assignment2
 
 COPY . /442_assignment2
 
-SHELL ["/bin/bash", "-c"]
+ENV PYSPARK_PYTHON=python3
 
-RUN python -m venv .
+ENV PYSPARK_DRIVER_PYTHON=python3
 
-RUN source bin/activate
+RUN pip install findspark
 
-RUN pip install --upgrade pip
-
-RUN pip install -r requirements.txt
-
-CMD ["python", "src/main.py"]
+CMD ["python3", "src/main.py"]

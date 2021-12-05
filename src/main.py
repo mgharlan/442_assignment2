@@ -1,3 +1,5 @@
+import findspark
+findspark.init()
 from pyspark.ml.regression import LinearRegressionModel
 from pyspark.ml.feature import VectorAssembler
 from pyspark.sql.types import DoubleType
