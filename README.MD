@@ -106,3 +106,30 @@ sudo usermod -a -G docker ec2-user
 ```
 
 Log out and back in again.
+
+Run the following commands to build the docker image
+
+```bash
+docker build -t harlangmason/cs442 .
+docker run harlangmason/cs442
+```
+
+Log out of docker and back in again to update docker hub credentials.
+
+```
+docker logout
+docker login
+```
+
+Push the new docker image to docker hub:
+
+```
+docker tag harlangmason/cs442 harlangmason/cs442:project2
+docker push harlangmason/cs442:project2
+```
+
+To pull the image on another EC2 instance run:
+
+```
+docker push harlangmason/cs442:project2
+```
