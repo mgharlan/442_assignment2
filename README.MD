@@ -131,5 +131,5 @@ docker push harlangmason/cs442:project2
 To pull the image on another EC2 instance run:
 
 ```
-docker push harlangmason/cs442:project2
+docker pull harlangmason/cs442:project2
 ```
