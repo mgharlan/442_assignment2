@@ -4,6 +4,8 @@ WORKDIR /442_assignment2
 
 COPY . /442_assignment2
 
+SHELL ["/bin/bash", "-c"]
+
 RUN python -m venv .
 
 RUN source bin/activate
