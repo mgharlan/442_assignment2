@@ -26,6 +26,7 @@ Next, we will need to install a few libraries. With the virtual environment up a
 pip install wheel
 pip install jupyter
 pip install numpy
+pip install pyspark
 ```
 
 Make sure java is installed and add the JAVA_HOME environment variable to your system.
