@@ -1,5 +1,7 @@
 # Project 2
 
+## Training / Developing the Models
+
 To get started, we will need to install spark from:
 
 > http://spark.apache.org/downloads.html
@@ -53,7 +55,13 @@ To run jupyter notebook (a playground environment) use:
 jupyter notebook
 ```
 
-To run the main program use:
+The main contents for developing and training the model is:
+
+```
+Main.ipynb
+```
+
+The model can be run with:
 
 ```
 python3 src/main.py
