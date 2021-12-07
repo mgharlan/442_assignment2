@@ -8,6 +8,9 @@ from pyspark.ml.feature import StandardScaler
 from pyspark.ml.evaluation import MulticlassClassificationEvaluator
 from pyspark.context import SparkContext
 from pyspark.sql.session import SparkSession
+from pyspark.ml.regression import RandomForestRegressionModel
+from pyspark.mllib.evaluation import RegressionMetrics
+
 
 
 class Main():
@@ -30,15 +33,21 @@ class Main():
 		lrPredictions = loadedModel.evaluate(testing)
 		print('RMSE for Linear Regression: ' + str(lrPredictions.rootMeanSquaredError))
 
-		loadedModel = RandomForestClassificationModel.load("rfModel")
+		loadedModel = RandomForestRegressionModel.load("rfModel")
 		rfPredictions = loadedModel.transform(testing)
+		valuesAndPreds = rfPredictions.select("prediction","quality").rdd
+		metrics = RegressionMetrics(valuesAndPreds)	
+		print('RMSE for Linear Regression: ' + str(metrics.meanSquaredError))
+
+		loadedModel = RandomForestClassificationModel.load("rfcModel")
+		rfcPredictions = loadedModel.transform(testing)
 		evaluator = MulticlassClassificationEvaluator(labelCol="quality", predictionCol="prediction", metricName='f1')
-		f1 = evaluator.evaluate(rfPredictions)
-		evaluator = MulticlassClassificationEvaluator(labelCol="quality", predictionCol="prediction", metricName='weightedRecall')
-		recall = evaluator.evaluate(rfPredictions)
+		f1 = evaluator.evaluate(rfcPredictions)
 		evaluator = MulticlassClassificationEvaluator(labelCol="quality", predictionCol="prediction", metricName='weightedPrecision')
-		precision = evaluator.evaluate(rfPredictions)
-		print('F1, Recall, Precision for Random Forest: ' + str(f1) + " " + str(recall) + " " + str(precision))
+		precision = evaluator.evaluate(rfcPredictions)
+		evaluator = MulticlassClassificationEvaluator(labelCol="quality", predictionCol="prediction", metricName='weightedRecall')
+		recall = evaluator.evaluate(rfcPredictions)
+		print('F1, Recall, Precision for Random Forest Regressor: ' + str(f1) + " " + str(recall) + " " + str(precision))
 
 if __name__ == "__main__":	
 	Main().run()
