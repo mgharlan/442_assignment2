@@ -37,7 +37,7 @@ class Main():
 		rfPredictions = loadedModel.transform(testing)
 		valuesAndPreds = rfPredictions.select("prediction","quality").rdd
 		metrics = RegressionMetrics(valuesAndPreds)	
-		print('RMSE for Linear Regression: ' + str(metrics.meanSquaredError))
+		print('RMSE for Random Forest Regression: ' + str(metrics.meanSquaredError))
 
 		loadedModel = RandomForestClassificationModel.load("rfcModel")
 		rfcPredictions = loadedModel.transform(testing)
@@ -47,7 +47,7 @@ class Main():
 		precision = evaluator.evaluate(rfcPredictions)
 		evaluator = MulticlassClassificationEvaluator(labelCol="quality", predictionCol="prediction", metricName='weightedRecall')
 		recall = evaluator.evaluate(rfcPredictions)
-		print('F1, Recall, Precision for Random Forest Regressor: ' + str(f1) + " " + str(recall) + " " + str(precision))
+		print('F1, Recall, Precision for Random Forest Classification: ' + str(f1) + " " + str(recall) + " " + str(precision))
 
 if __name__ == "__main__":	
 	Main().run()
