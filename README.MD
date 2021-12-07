@@ -142,3 +142,5 @@ To pull the image on another EC2 instance run:
 docker pull harlangmason/cs442:project2
 docker run harlangmason/cs442:project2
 ```
+
+The docker image automatically runs the src/main.py file and the output of the model predictions are printed to the console.
