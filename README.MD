@@ -80,28 +80,28 @@ Create an AWS EC2 instance and connect to it.
 Then we will need git to get the repo onto the ec2 instance:
 
 ```bash
-> sudo yum install git -y
+sudo yum install git -y
 ```
 
 Git requires ssh keys to be configured in order to pull code from a private repo so ssh keys were generated with the following command and using all the default options
 
 ```bash
-> ssh-keygen
+ssh-keygen
 ```
 
 Next, the generated public key should be copied and pasted from the console into github to give the ec2 instance access:
 
 ```bash
-> cd ~/.ssh
-> cat id_rsa.pub
+cd ~/.ssh
+cat id_rsa.pub
 ```
 
 Once the keys for github have been setup, the code can be pulled onto the instances:
 
 ```bash
-> cd ~
-> git clone git@github.com:mgharlan/442_assignment2.git
-> cd 442_assignment2
+cd ~
+git clone git@github.com:mgharlan/442_assignment2.git
+cd 442_assignment2
 ```
 
 Run the following commands to setup docker on an ec2 instance
